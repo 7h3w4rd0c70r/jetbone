@@ -1,12 +1,13 @@
 
 import Waiter from './core/waiter'
-import XYZ from './xyz'
+import JetBone from './jetbone'
 import Model from './model'
 
 class Module extends Waiter {
+    public readonly __type: string = 'module'
     public name: string = null
 
-    private _parent: XYZ = null
+    private readonly _parent: JetBone
     private _state: object = {
         
     }
@@ -15,7 +16,7 @@ class Module extends Waiter {
 
     }
 
-    constructor(_parent: XYZ, name: string) {
+    constructor(_parent: JetBone, name: string) {
         super()
 
         this._parent = _parent

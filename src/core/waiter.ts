@@ -1,12 +1,6 @@
 
 import jSignal from 'jsignal'
 
-interface iListeners {
-    onChange?: Function;
-    onLoading?: Function;
-    onDestroy?: Function;
-}
-
 class Waiter {
     private _onChange = new jSignal()
     private _onLoading = new jSignal()
@@ -18,9 +12,9 @@ class Waiter {
         return this._loading
     }
 
-    public listen(listeners: iListeners): void;
+    public listen(listeners: { onChange?: Function, onLoading?: Function, onDestroy?: Function }): void;
     public listen(onChange: Function, onLoading?: Function, onDestroy?: Function): void;
-    public listen(listenersOrOnChange: iListeners | Function, onLoading?: Function, onDestroy?: Function) {
+    public listen(listenersOrOnChange: { onChange?: Function, onLoading?: Function, onDestroy?: Function } | Function, onLoading?: Function, onDestroy?: Function) {
         if (typeof listenersOrOnChange === 'function') {
             this._onChange.listen(listenersOrOnChange)
         }
@@ -44,9 +38,9 @@ class Waiter {
         }
     }
 
-    public unlisten(listeners: iListeners): void;
+    public unlisten(listeners: { onChange?: Function, onLoading?: Function, onDestroy?: Function }): void;
     public unlisten(onChange: Function, onLoading?: Function, onDestroy?: Function): void;
-    public unlisten(listenersOrOnChange: iListeners | Function, onLoading?: Function, onDestroy?: Function): void {
+    public unlisten(listenersOrOnChange: { onChange?: Function, onLoading?: Function, onDestroy?: Function } | Function, onLoading?: Function, onDestroy?: Function): void {
         if (typeof listenersOrOnChange === 'function') {
             this._onChange.unlisten(listenersOrOnChange)
         }

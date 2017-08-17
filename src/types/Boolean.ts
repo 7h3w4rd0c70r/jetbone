@@ -7,7 +7,7 @@ class BooleanType extends DataType<boolean> {
     protected _default: boolean = this._null ? null : false
     protected _value: boolean = this._default
 
-    constructor(params) {
+    constructor(params?: { default?: boolean, null?: boolean }) {
         super(params)
 
         if (params.default !== undefined) {

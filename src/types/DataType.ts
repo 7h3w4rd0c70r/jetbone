@@ -6,7 +6,7 @@ class DataType<T> {
 
     protected _null = true
 
-    constructor(params: { default?: T, null?: boolean }) {
+    constructor(params?: { default?: T, null?: boolean }) {
         if (params.null === false) {
             this._null = false
         } else if (params.null && params.null !== null && params.null !== true)  {
@@ -18,11 +18,11 @@ class DataType<T> {
         }
     }
 
-    parse(unparsed: any): T {
-        if (this._null === false && unparsed === null) {
+    parse(value: any): T {
+        if (this._null === false && value === null) {
             throw new Error('Cannot parse value null if propery is set to not null')
         }
-        return unparsed
+        return value
     }
 
     validate(value): boolean {

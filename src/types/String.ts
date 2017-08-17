@@ -7,7 +7,7 @@ class StringType extends DataType<string> {
     protected _default: string = this._null ? null : ''
     protected _value: string = this._default
 
-    constructor(params) {
+    constructor(params?: { default?: string, null?: boolean }) {
         super(params)
 
         if (params.default !== undefined) {

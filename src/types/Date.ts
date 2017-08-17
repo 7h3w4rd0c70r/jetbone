@@ -2,11 +2,12 @@
 import DataType from './DataType'
 
 class DateType extends DataType<Date> {
-    _name = 'Date'
-    _default = this._null ? null : new Date()
-    _value = this._default
+    public readonly _name: string = 'Date'
 
-    constructor(params) {
+    protected _default: Date = this._null ? null : new Date()
+    protected _value: Date = this._default
+
+    constructor(params?: { default?: Date, null?: boolean }) {
         super(params)
 
         if (params.default !== undefined) {
@@ -16,7 +17,7 @@ class DateType extends DataType<Date> {
         this._value = this._default
     }
 
-    parse(value) {
+    parse(value): Date {
         value = super.parse(value)
         if (value) {
             if (value instanceof Date) {
@@ -26,14 +27,14 @@ class DateType extends DataType<Date> {
             } else if (!isNaN(value)) {
                 return new Date(Number(value))
             } else {
-                throw new Error('Cannot parse a value ' + value + '. Expected valid date, string, number, null (if not null) or undefined.')
+                throw new Error('Cannot parse a value ' + value + '. Expected valid date, string, number or null.')
             }
         } else {
             return this._default
         }
     }
 
-    validate(value) {
+    validate(value): boolean {
         return super.validate(value) ? (value === null || value instanceof Date ? true : false) : false
     }
 }

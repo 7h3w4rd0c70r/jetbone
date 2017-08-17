@@ -1,7 +1,7 @@
 
 import * as DataTypes from './types'
-import XYZ from './xyz'
+import JetBone from './jetbone'
 
 export const Types = DataTypes
-
-export default XYZ
+export { default as Schema } from './schema'
+export default JetBone

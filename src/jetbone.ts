@@ -2,7 +2,9 @@
 import Waiter from './core/waiter'
 import Module from './module'
 
-class XYZ extends Waiter {
+class JetBone extends Waiter {
+    public readonly __type: string = 'jetbone'
+
     private _state: object = {
 
     }
@@ -28,4 +30,4 @@ class XYZ extends Waiter {
     }
 }
 
-export default XYZ
+export default JetBone

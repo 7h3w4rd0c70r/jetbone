@@ -7,7 +7,7 @@ class NumberType extends DataType<number> {
     protected _default: number = this._null ? null : 0
     protected _value: number = this._default
 
-    constructor(params) {
+    constructor(params?: { default?: number, null?: boolean }) {
         super(params)
 
         if (params.default !== undefined) {
