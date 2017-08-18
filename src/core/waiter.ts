@@ -5,6 +5,7 @@ class Waiter {
     private _onChange = new jSignal()
     private _onLoading = new jSignal()
     private _onDestroy = new jSignal()
+    private _event = new jSignal()
 
     private _loading: boolean = false
     
@@ -75,6 +76,10 @@ class Waiter {
     public dispatchDestroy(...args): void {
         this._onDestroy.dispatch(...args)
     }
+
+    //public emitEvent(event: string): void {
+    //    this._event.dispatch(event)
+    //}
 }
 
 export default Waiter

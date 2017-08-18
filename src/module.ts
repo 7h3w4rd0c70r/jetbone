@@ -4,6 +4,7 @@ import JetBone from './jetbone'
 import Model from './model'
 
 class Module extends Waiter {
+    public static __type: string = 'Module'
     public readonly __type: string = 'module'
     public name: string = null
 
@@ -24,16 +25,12 @@ class Module extends Waiter {
     }
 
     public createModel(modelName: string, schema: object) {
-        if (Model.validateSchema(schema)) {
-            const model = new Model(this, modelName, schema)
-            model.listen({
-                onChange: this.dispatchChange,
-                onLoading: this.dispatchLoading
-            })
-            this._models[modelName] = model
-        } else {
-            throw Error('Model ' + modelName + ' has an invalid schema')
-        }
+        const model = new Model(this, modelName, schema)
+        model.listen({
+            onChange: this.dispatchChange,
+            onLoading: this.dispatchLoading
+        })
+        this._models[modelName] = model
     }
 
     public createActions(modelName: string, actions) {
