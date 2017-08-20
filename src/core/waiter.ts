@@ -8,6 +8,11 @@ class Waiter {
     private _event = new jSignal()
 
     private _loading: boolean = false
+
+    protected set loading(value) {
+        this._loading = Boolean(value)
+        this.dispatchLoading()
+    }
     
     public isLoading(): boolean {
         return this._loading

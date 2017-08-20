@@ -1,7 +1,8 @@
 
 import Waiter from './core/waiter'
-import getter from './helpers/getter'
-import setter from './helpers/setter'
+import getter from './core/getter'
+import setter from './core/setter'
+import createActions from './core/createActions'
 import Module from './module'
 import Schema from './schema'
 import * as Types from './types'
@@ -15,10 +16,10 @@ class Model extends Waiter {
     private readonly _schema: Schema
     private _state: object
 
-    private set state(value: object) {
-        this._state = value
-        this.dispatchChange()
-    }
+     private set state(value: object) {
+         this._state = value
+         this.dispatchChange()
+     }
 
     constructor(_parent: Module, name: string, schema: object) {
         super()

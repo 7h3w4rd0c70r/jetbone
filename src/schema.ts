@@ -1,5 +1,5 @@
 
-import * as ModelHelpers from './helpers/schema'
+import * as ModelHelpers from './core/schema'
 
 class Schema {
     private readonly schema: object

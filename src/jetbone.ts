@@ -38,7 +38,7 @@ class JetBone extends Waiter {
         this.state = Object.assign({ }, this._state, { [name]: module })
     }
 
-    public module(moduleName): Module {
+    public getModule(moduleName): Module {
         if (this._state[moduleName]) {
             return this._state[moduleName]
         } else {
